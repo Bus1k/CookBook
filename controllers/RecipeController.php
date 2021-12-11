@@ -14,38 +14,49 @@ class RecipeController extends Controller
         $this->recipes = new RecipeModel();
     }
 
-    public function index()
+    //Display main page with recipes
+    public function index(): void
     {
         $this->view('recipe/index', [
             'recipes' => $this->recipes->getAll()
         ]);
     }
 
-    public function show()
+    //Show single recipe
+    public function show(int $id): void
     {
-
+        $this->view('recipe/show', [
+            'recipe' => $this->recipes->getById($id)
+        ]);
     }
 
+    //Display form to add new recipe
     public function create()
     {
-
+        $this->view('recipe/create');
     }
 
+    //Store data with new recipe in database
     public function store()
     {
 
     }
 
-    public function edit()
+    //Display form to edit recipe
+    public function edit(int $id)
     {
-
+        $this->view('recipe/create', [
+            'recipe' => $this->recipes->getById($id)
+        ]);
     }
 
+    //Update recipe in database
     public function update()
     {
 
     }
 
+    //Delete recipe from db
     public function destroy()
     {
 

@@ -64,13 +64,13 @@ class Database
         return $this->stmt->execute();
     }
 
-    //Get result set as array of objects
+    //Get results
     public function resultSet(){
         $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    //Get single record as object
+    //Get single record
     public function single(){
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
