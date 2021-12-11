@@ -1,6 +1,6 @@
 <?php
 
-namespace app;
+namespace app\core;
 
 use PDO;
 
@@ -17,7 +17,7 @@ class Database
     private string $name = DB_NAME;
     private int $port    = DB_PORT;
 
-    private $pdo;
+    private PDO $pdo;
     private $stmt;
     public static ?Database $db = null;
 
@@ -26,6 +26,7 @@ class Database
         try
         {
             $this->pdo = new PDO('mysql:host=' . $this->host . ';port=' . $this->port . ';dbname='.$this->name, $this->user, $this->pass);
+            //throw exception if database connection problem
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             self::$db = $this;
         } catch(\PDOException $e) {

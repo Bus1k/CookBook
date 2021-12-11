@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use app\Database;
+use app\core\Database;
 use app\helpers\UtilHelper;
 
 /**

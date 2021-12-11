@@ -2,9 +2,6 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-use app\controllers\ProductController;
-use app\Router;
-
 if(file_exists(__DIR__.'/../vendor/autoload.php')){
     require_once __DIR__.'/../vendor/autoload.php';
 } else {
@@ -17,14 +14,15 @@ if(file_exists(__DIR__.'/../config/config.php')){
     die('Configure the settings in the config.php file');
 }
 
-$database = new \app\Database();
+use app\controllers\RecipeController;
+use app\core\Router;
 
 
+$database = new \app\core\Database();
+$router   = new Router();
 
-//$router = new Router($database);
-//
-//$router->get('/', [ProductController::class, 'index']);
-//$router->get('/products', [ProductController::class, 'index']);
+$router->get('/', [RecipeController::class, 'index']);
+$router->get('/products', [ProductController::class, 'index']);
 //$router->get('/products/index', [ProductController::class, 'index']);
 //$router->get('/products/create', [ProductController::class, 'create']);
 //$router->post('/products/create', [ProductController::class, 'create']);
@@ -32,4 +30,4 @@ $database = new \app\Database();
 //$router->post('/products/update', [ProductController::class, 'update']);
 //$router->post('/products/delete', [ProductController::class, 'delete']);
 //
-//$router->resolve();
+$router->resolve();

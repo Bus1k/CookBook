@@ -2,27 +2,37 @@
 
 namespace app\controllers;
 
+use app\core\Controller;
+use app\core\Router;
 use app\models\Product;
-use app\Router;
+use app\models\RecipesModel;
 
 /**
  * Class ProductController
  *
  * @package app\controllers
  */
-class ProductController
+class ProductController extends Controller
 {
-    public function index(Router $router)
+    private object $recipes;
+
+    public function __construct()
     {
-        $keyword = $_GET['search'] ?? '';
-        $products = $router->database->getProducts($keyword);
-        $router->renderView('products/index', [
-            'products' => $products,
-            'keyword' => $keyword
-        ]);
+        $this->recipes = new RecipesModel();
     }
 
-    public function create(Router $router)
+    public function index()
+    {
+
+//        $keyword = $_GET['search'] ?? '';
+//        $products = $router->database->getProducts($keyword);
+//        $router->renderView('products/index', [
+//            'products' => $products,
+//            'keyword' => $keyword
+//        ]);
+    }
+
+    public function create()
     {
         $productData = [
             'image' => ''
