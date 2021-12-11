@@ -1,0 +1,17 @@
+{
+    "name": "kb/cookbook",
+    "authors": [
+        {
+            "name": "Katarzyna Bus",
+            "email": "katarzyna.bus9455@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-pdo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    }
+}
