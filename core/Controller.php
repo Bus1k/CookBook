@@ -4,7 +4,7 @@ namespace app\core;
 
 class Controller
 {
-    public function view($view, $params = [])
+    protected function view(string $view, array $params = [])
     {
         foreach ($params as $key => $value) {
             $$key = $value;
@@ -15,4 +15,11 @@ class Controller
         $content = ob_get_clean();
         include PATH_ROOT."/views/_layout.php";
     }
+
+    protected function redirect(string $page)
+    {
+        header('Location: '.$page);
+        exit;
+    }
+
 }

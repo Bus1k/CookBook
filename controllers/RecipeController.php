@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\models\RecipesModel;
+use app\models\RecipeModel;
 
 class RecipeController extends Controller
 {
@@ -11,12 +11,14 @@ class RecipeController extends Controller
 
     public function __construct()
     {
-        $this->recipes = new RecipesModel();
+        $this->recipes = new RecipeModel();
     }
 
     public function index()
     {
-        $this->view('products/index');
+        $this->view('recipe/index', [
+            'recipes' => $this->recipes->getAll()
+        ]);
     }
 
     public function show()

@@ -19,7 +19,6 @@ class Database
 
     private PDO $pdo;
     private $stmt;
-    public static ?Database $db = null;
 
     public function __construct()
     {
@@ -28,16 +27,15 @@ class Database
             $this->pdo = new PDO('mysql:host=' . $this->host . ';port=' . $this->port . ';dbname='.$this->name, $this->user, $this->pass);
             //throw exception if database connection problem
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            self::$db = $this;
         } catch(\PDOException $e) {
             echo $e->getMessage();
         }
     }
 
     //Prepare statement with query
-    public function query($sql)
+    public function query(string $sql)
     {
-        $this->stmt = $this->dbh->prepare($sql);
+        $this->stmt = $this->pdo->prepare($sql);
     }
 
     //Bind Values

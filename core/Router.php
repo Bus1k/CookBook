@@ -12,12 +12,12 @@ class Router
     public array $getRoutes = [];
     public array $postRoutes = [];
 
-    public function get($url, $fn)
+    public function get(string $url, array $fn)
     {
         $this->getRoutes[$url] = $fn;
     }
 
-    public function post($url, $fn)
+    public function post(string $url, array $fn)
     {
         $this->postRoutes[$url] = $fn;
     }

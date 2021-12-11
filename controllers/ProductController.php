@@ -5,7 +5,7 @@ namespace app\controllers;
 use app\core\Controller;
 use app\core\Router;
 use app\models\Product;
-use app\models\RecipesModel;
+use app\models\RecipeModel;
 
 /**
  * Class ProductController
@@ -18,7 +18,7 @@ class ProductController extends Controller
 
     public function __construct()
     {
-        $this->recipes = new RecipesModel();
+        $this->recipes = new RecipeModel();
     }
 
     public function index()
