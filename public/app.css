@@ -1,10 +1,38 @@
-body {
-    padding: 50px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.product-img {
-    width: 50px;
+.container {
+    font-family: 'Kumbh Sans', sans-serif;
+    text-align: center;
+    width: 30rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: gray;
+    border-radius: 20px;
 }
-.product-img-view {
-    width: 120px;
+
+input,
+label {
+    width: 90%;
+    padding: 1em;
+    margin: 1em;
+}
+h1{
+    margin: 1em;
+
+}
+p{
+    margin-bottom: 1em;
+}
+button {
+    width: 10rem;
+    height: 2rem;
+    margin: 1em;
+    font-family: 'Kumbh Sans',
+    sans-serif;
 }

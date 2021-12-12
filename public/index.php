@@ -15,6 +15,7 @@ if(file_exists(__DIR__.'/../config/config.php')){
 }
 
 use app\controllers\RecipeController;
+use app\controllers\RegisterController;
 use app\core\Router;
 
 
@@ -30,4 +31,8 @@ $router->get('/products', [ProductController::class, 'index']);
 //$router->post('/products/update', [ProductController::class, 'update']);
 //$router->post('/products/delete', [ProductController::class, 'delete']);
 //
+
+$router->get('/register', [RegisterController::class, 'create']);
+$router->post('/register', [RegisterController::class, 'store']);
+
 $router->resolve();

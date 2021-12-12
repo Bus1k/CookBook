@@ -4,7 +4,6 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\core\Router;
-use app\models\Product;
 use app\models\RecipeModel;
 
 /**
