@@ -10,7 +10,7 @@ use app\models\UserModel;
  *
  * @package app\controllers
  */
-class RegisterController extends Controller
+class AuthController extends Controller
 {
     private object $user;
 
@@ -54,6 +54,7 @@ class RegisterController extends Controller
         $this->redirect('/login');
     }
 
+    //Display form to login
     public function login()
     {
         $this->view('register/login');

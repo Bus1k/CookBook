@@ -46,7 +46,7 @@ div.mainpage {
     margin: 4rem auto 0rem auto;
     padding: 1em;
     max-width: 1200px;
-    background-image: url(images/registerbackground.jpg);
+    background-image: url(../images/registerbackground.jpg);
     background-size: cover;
     height:40vh;
 

@@ -15,7 +15,7 @@ if(file_exists(__DIR__.'/../config/config.php')){
 }
 
 use app\controllers\RecipeController;
-use app\controllers\RegisterController;
+use app\controllers\AuthController;
 use app\core\Router;
 
 
@@ -23,19 +23,8 @@ $database = new \app\core\Database();
 $router   = new Router();
 
 $router->get('/', [RecipeController::class, 'index']);
-$router->get('/products', [ProductController::class, 'index']);
-//$router->get('/products/index', [ProductController::class, 'index']);
-//$router->get('/products/create', [ProductController::class, 'create']);
-//$router->post('/products/create', [ProductController::class, 'create']);
-//$router->get('/products/update', [ProductController::class, 'update']);
-//$router->post('/products/update', [ProductController::class, 'update']);
-//$router->post('/products/delete', [ProductController::class, 'delete']);
-//
-
-$router->get('/register', [RegisterController::class, 'create']);
-$router->post('/register', [RegisterController::class, 'store']);
-
-$router->get('/login', [RegisterController::class, 'login']);
-
+$router->get('/register', [AuthController::class, 'create']);
+$router->post('/register', [AuthController::class, 'store']);
+$router->get('/login', [AuthController::class, 'login']);
 
 $router->resolve();

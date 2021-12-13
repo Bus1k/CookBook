@@ -6,6 +6,11 @@ use app\core\Model;
 
 class RecipeModel extends Model
 {
+    public function rules(): array
+    {
+        // TODO: Implement rules() method.
+    }
+
     public function getAll(): array
     {
         $this->db->query('SELECT * FROM RECIPES');
