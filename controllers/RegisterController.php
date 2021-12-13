@@ -22,7 +22,9 @@ class RegisterController extends Controller
     //Display form to create user
     public function create()
     {
-        $this->view('register/create');
+        $this->view('register/create', [
+            'model' => $this->user,
+        ]);
     }
 
     //Store user in database
@@ -35,19 +37,25 @@ class RegisterController extends Controller
             'password_confirm' => $_POST['password_confirm'],
         ];
 
-        if($this->user->validate($data)) {
-            $this->user->create(
-                $data['nickname'],
-                $data['email'],
-                $data['password']
-            );
+        if(!$this->user->validate($data)) {
+            $this->view('register/create', [
+                'model' => $this->user,
+                'data'  => $data,
+            ]);
+            return;
         }
 
-        var_dump($this->user->errors);
-        die;
-        die('KASZTIX');
+        $this->user->create(
+            $data['nickname'],
+            $data['email'],
+            $data['password']
+        );
 
-
+        $this->redirect('/login');
     }
 
+    public function login()
+    {
+        $this->view('register/login');
+    }
 }

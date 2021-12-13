@@ -35,4 +35,7 @@ $router->get('/products', [ProductController::class, 'index']);
 $router->get('/register', [RegisterController::class, 'create']);
 $router->post('/register', [RegisterController::class, 'store']);
 
+$router->get('/login', [RegisterController::class, 'login']);
+
+
 $router->resolve();
