@@ -10,7 +10,7 @@ use app\models\UserModel;
  *
  * @package app\controllers
  */
-class AuthController extends Controller
+class RegisterController extends Controller
 {
     private object $user;
 
@@ -22,7 +22,7 @@ class AuthController extends Controller
     //Display form to create user
     public function create()
     {
-        $this->view('register/create', [
+        $this->view('user/create', [
             'model' => $this->user,
         ]);
     }
@@ -52,11 +52,5 @@ class AuthController extends Controller
         );
 
         $this->redirect('/login');
-    }
-
-    //Display form to login
-    public function login()
-    {
-        $this->view('register/login');
     }
 }

@@ -15,16 +15,28 @@ if(file_exists(__DIR__.'/../config/config.php')){
 }
 
 use app\controllers\RecipeController;
-use app\controllers\AuthController;
+use app\controllers\RegisterController;
+use app\controllers\LoginController;
 use app\core\Router;
 
 
 $database = new \app\core\Database();
 $router   = new Router();
 
+/*
+ *
+ * BASIC ROUTING
+ *
+ */
+//HOMEPAGE
 $router->get('/', [RecipeController::class, 'index']);
-$router->get('/register', [AuthController::class, 'create']);
-$router->post('/register', [AuthController::class, 'store']);
-$router->get('/login', [AuthController::class, 'login']);
+
+//REGISTER USER
+$router->get('/register', [RegisterController::class, 'create']);
+$router->post('/register', [RegisterController::class, 'store']);
+
+//LOGIN AND LOGOUT
+$router->get('/login', [LoginController::class, 'create']);
+$router->post('/login', [LoginController::class, 'login']);
 
 $router->resolve();
