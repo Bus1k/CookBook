@@ -38,7 +38,7 @@ class RegisterController extends Controller
         ];
 
         if(!$this->user->validate($data)) {
-            $this->view('register/create', [
+            $this->view('user/create', [
                 'model' => $this->user,
                 'data'  => $data,
             ]);

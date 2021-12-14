@@ -13,23 +13,57 @@ use app\models\UserModel;
  */
 class LoginController extends Controller
 {
-    private object $user;
     private object $login;
+    private object $user;
 
     public function __construct()
     {
-        $this->user  = new UserModel();
         $this->login = new LoginModel();
+        $this->user  = new UserModel();
     }
 
     //Display form to login
     public function create()
     {
-        $this->view('user/login');
+        $this->view('user/login', [
+            'model' => $this->login
+        ]);
     }
 
     //Login user in session
     public function login()
+    {
+        $data = [
+            'email'    => $_POST['email'],
+            'password' => $_POST['password']
+        ];
+
+        if(!$this->login->validate($data)) {
+            $this->view('user/login', [
+                'model' => $this->login,
+                'data'  => $data,
+            ]);
+            return;
+        }
+
+        $dbUser = $this->user->getByEmail($data['email']);
+
+        if(!$dbUser || !password_verify($data['password'], $dbUser['PASSWORD'])) {
+            $this->login->addCustomError('email', 'Wrong login details');
+            $this->login->addCustomError('password', '');
+            $this->view('user/login', [
+                'model' => $this->login,
+                'data'  => $data,
+            ]);
+            return;
+        }
+
+
+        $this->redirect('/');
+    }
+
+    //Destroy user session
+    public function logout()
     {
 //        $this->redirect('/');
     }

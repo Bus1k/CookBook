@@ -28,5 +28,13 @@ class UserModel extends Model
         $this->db->execute();
     }
 
+    public function getByEmail(string $email)
+    {
+        $this->db->query('SELECT * FROM USERS WHERE EMAIL = :EMAIL');
+        $this->db->bind(':EMAIL', $email);
+
+        return $this->db->single();
+    }
+
 
 }
