@@ -1,7 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
 if(file_exists(__DIR__.'/../vendor/autoload.php')){
     require_once __DIR__.'/../vendor/autoload.php';
 } else {
@@ -19,6 +16,7 @@ use app\controllers\RegisterController;
 use app\controllers\LoginController;
 use app\core\Router;
 
+\app\core\Session::start();
 
 $database = new \app\core\Database();
 $router   = new Router();
@@ -38,5 +36,6 @@ $router->post('/register', [RegisterController::class, 'store']);
 //LOGIN AND LOGOUT
 $router->get('/login', [LoginController::class, 'create']);
 $router->post('/login', [LoginController::class, 'login']);
+$router->get('/logout', [LoginController::class, 'logout']);
 
 $router->resolve();

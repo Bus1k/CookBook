@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\core\Session;
 use app\models\LoginModel;
 use app\models\UserModel;
 
@@ -58,13 +59,15 @@ class LoginController extends Controller
             return;
         }
 
-
+        Session::set('user', $dbUser);
         $this->redirect('/');
     }
 
     //Destroy user session
     public function logout()
     {
-//        $this->redirect('/');
+        Session::remove('user');
+        Session::destroy();
+        $this->redirect('/');
     }
 }

@@ -4,9 +4,13 @@
             <li>
                 <h1>CookBook</h1>
             </li>
-            <li><button><a href="/register">Register</a></button></li>
-            <span></span>
-            <li><button><a href="/login">Log in</a></button></li>
+            <?php if(!\app\core\Session::isLogin()): ?>
+                <li><button><a href="/register">Register</a></button></li>
+                <span></span>
+                <li><button><a href="/login">Log in</a></button></li>
+            <?php else: ?>
+                <li><button><a href="/logout">Logout</a></button></li>
+            <?php endif; ?>
     </nav>
     <header>
         <div>

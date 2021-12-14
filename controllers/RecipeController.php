@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\core\Session;
 use app\models\RecipeModel;
 
 class RecipeController extends Controller
@@ -17,6 +18,8 @@ class RecipeController extends Controller
     //Display main page with recipes
     public function index(): void
     {
+//        var_dump(Session::get('user')['NICKNAME']);
+//        die;
         $this->view('recipe/index', [
             'recipes' => $this->recipes->getAll()
         ]);
