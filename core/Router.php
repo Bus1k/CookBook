@@ -26,6 +26,7 @@ class Router
     {
         $method = strtoupper($_SERVER['REQUEST_METHOD']);
         $url = $_SERVER['REQUEST_URI'] ?? '/';
+        $url = $this->removeParams($url);
 
         if ($method === 'GET') {
             $callback = $this->getRoutes[$url] ?? null;
@@ -42,6 +43,22 @@ class Router
             $callback[0] = new $callback[0];
         }
 
-        echo $callback($this);
+        $callback();
+    }
+
+    //if we want pass variable in url e.g /recipe/show?id=2 we need remove ?id=2 to assign route in array /recipe/show
+    public function removeParams($url)
+    {
+        if($url !== '')
+        {
+            $parts = explode('?', $url, 2);
+
+            if(strpos($parts[0], '=') === false)
+            {
+                return $parts[0];
+            }
+
+            return '';
+        }
     }
 }

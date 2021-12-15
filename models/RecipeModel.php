@@ -26,6 +26,12 @@ class RecipeModel extends Model
         return $this->db->single();
     }
 
+    public function getLast(): array
+    {
+        $this->db->query('SELECT * FROM RECIPES ORDER BY ID DESC LIMIT 1;');
+        return $this->db->single();
+    }
+
     public function create(string $title, int $user_id, ?string $image, string $description, string $ingredients, int $prep_time, string $level): void
     {
         $this->db->query('INSERT INTO RECIPES (TITLE, USER_ID, IMAGE, DESCRIPTION, INGREDIENTS, PREP_TIME, LEVEL, CREATED_AT) 

@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\core\Session;
 use app\models\RecipeModel;
 
 class RecipeController extends Controller
@@ -18,49 +17,61 @@ class RecipeController extends Controller
     //Display main page with recipes
     public function index(): void
     {
-//        var_dump(Session::get('user')['NICKNAME']);
-//        die;
+        $allRecipes = $this->recipes->getAll();
+        $lastRecipe = $allRecipes[count($allRecipes) - 1];
+
+        unset($allRecipes[count($allRecipes) - 1]);
+
         $this->view('recipe/index', [
-            'recipes' => $this->recipes->getAll()
+            'lastRecipe' => $lastRecipe,
+            'allRecipes' => $allRecipes
         ]);
     }
 
     //Show single recipe
-    public function show(int $id): void
+    public function show(): void
     {
+        if(!isset($_GET['id'])) {
+            $this->redirect('/');
+        }
+
         $this->view('recipe/show', [
-            'recipe' => $this->recipes->getById($id)
+            'recipe' => $this->recipes->getById((int) $_GET['id'])
         ]);
     }
 
     //Display form to add new recipe
-    public function create()
+    public function create(): void
     {
         $this->view('recipe/create');
     }
 
     //Store data with new recipe in database
-    public function store()
+    public function store(): void
     {
 
     }
 
     //Display form to edit recipe
-    public function edit(int $id)
+    public function edit(): void
     {
+        if(!isset($_GET['id'])) {
+            $this->redirect('/');
+        }
+
         $this->view('recipe/create', [
-            'recipe' => $this->recipes->getById($id)
+            'recipe' => $this->recipes->getById($_GET['id'])
         ]);
     }
 
     //Update recipe in database
-    public function update()
+    public function update(): void
     {
 
     }
 
     //Delete recipe from db
-    public function destroy()
+    public function destroy(): void
     {
 
     }

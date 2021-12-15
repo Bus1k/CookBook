@@ -38,4 +38,9 @@ $router->get('/login', [LoginController::class, 'create']);
 $router->post('/login', [LoginController::class, 'login']);
 $router->get('/logout', [LoginController::class, 'logout']);
 
+//RECIPES
+$router->get('/recipe/add', [RecipeController::class, 'create']);
+$router->post('/recipe/add', [RecipeController::class, 'store']);
+$router->get('/recipe/show', [RecipeController::class, 'show']);
+
 $router->resolve();
