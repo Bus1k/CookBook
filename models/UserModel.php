@@ -36,5 +36,12 @@ class UserModel extends Model
         return $this->db->single();
     }
 
+    public function getById(int $id)
+    {
+        $this->db->query('SELECT * FROM USERS WHERE ID = :ID');
+        $this->db->bind(':ID', $id);
+
+        return $this->db->single();
+    }
 
 }

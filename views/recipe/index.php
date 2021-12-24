@@ -40,7 +40,7 @@
                     <div class='previousRecipe'><img src='recipesphotos/salad-g62ccdc077_640.jpg' alt="salad">
                         <h3><?php echo $recipe['TITLE']; ?></h3>
                         <p><?php echo $recipe['DESCRIPTION']; ?></p>
-                        <a href="/recipe/show?id=<?php echo $lastRecipe['ID']; ?>">Show details</a>
+                        <a href="/recipe/show?id=<?php echo $recipe['ID']; ?>">Show details</a>
                     </div>
                 <?php endforeach; ?>
             </div>
