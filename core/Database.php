@@ -73,7 +73,13 @@ class Database
     //Get single record
     public function single(){
         $this->execute();
-        return $this->stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $this->stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($result === false) {
+            return [];
+        }
+
+        return $result;
     }
 
     //Get row count
