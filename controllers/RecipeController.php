@@ -54,13 +54,41 @@ class RecipeController extends Controller
     //Display form to add new recipe
     public function create(): void
     {
-        $this->view('recipe/create');
+        $this->view('recipe/create', [
+            'model' => $this->recipe,
+        ]);
     }
 
     //Store data with new recipe in database
     public function store(): void
     {
+        $data = [
+            'title'       => $_POST['title'],
+            'description' => $_POST['description'],
+            'ingredients' => $_POST['ingredients'],
+            'time'        => $_POST['time'],
+            'level'       => $_POST['level']
+        ];
 
+        if(!$this->recipe->validate($data)) {
+            $this->view('recipe/create', [
+                'model' => $this->recipe,
+                'data'  => $data
+            ]);
+            return;
+        }
+
+        $this->recipe->create(
+            $data['title'],
+            Session::get('user')['ID'],
+            'IMAGE',
+            $data['description'],
+            $data['ingredients'],
+            $data['time'],
+            $data['level']
+        );
+
+        $this->redirect('/');
     }
 
     //Display form to edit recipe
@@ -70,8 +98,13 @@ class RecipeController extends Controller
             $this->redirect('/');
         }
 
+        $recipe = $this->recipe->getById($_GET['id']);
+        if(empty($recipe) || $recipe['USER_ID'] !== Session::get('user')['ID']) {
+            $this->redirect('/');
+        }
+
         $this->view('recipe/create', [
-            'recipe' => $this->recipe->getById($_GET['id'])
+            'recipe' => $recipe
         ]);
     }
 

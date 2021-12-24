@@ -203,7 +203,7 @@ div.form, div.singleRecipe {
     margin: 0 auto;
 }
 
-textarea,
+textarea, select,
 .form input {
     font-family: 'Kumbh Sans',
     sans-serif;

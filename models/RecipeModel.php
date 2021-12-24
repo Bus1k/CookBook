@@ -8,7 +8,13 @@ class RecipeModel extends Model
 {
     public function rules(): array
     {
-        // TODO: Implement rules() method.
+        return [
+            'title'       => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 9], [self::RULE_MAX, 'max' => 255]],
+            'description' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 10]],
+            'ingredients' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 10], [self::RULE_MAX, 'max' => 255]],
+            'time'        => [self::RULE_REQUIRED],
+            'level'       => [self::RULE_REQUIRED],
+        ];
     }
 
     public function getAll(): array
