@@ -35,7 +35,7 @@ class RecipeController extends Controller
     //Show single recipe
     public function show(): void
     {
-        if(!isset($_GET['id'])) {
+        if(empty($_GET['id'])) {
             $this->redirect('/');
         }
 
@@ -78,7 +78,7 @@ class RecipeController extends Controller
             return;
         }
 
-        $this->recipe->create(
+        $id = $this->recipe->create(
             $data['title'],
             Session::get('user')['ID'],
             'IMAGE',
@@ -88,13 +88,13 @@ class RecipeController extends Controller
             $data['level']
         );
 
-        $this->redirect('/');
+        $this->redirect('/recipe/show?id='.$id);
     }
 
     //Display form to edit recipe
     public function edit(): void
     {
-        if(!isset($_GET['id'])) {
+        if(empty($_GET['id'])) {
             $this->redirect('/');
         }
 
@@ -103,21 +103,53 @@ class RecipeController extends Controller
             $this->redirect('/');
         }
 
-        $this->view('recipe/create', [
-            'recipe' => $recipe
+        $this->view('recipe/edit', [
+            'model'  => $this->recipe,
+            'recipe' => $recipe,
         ]);
     }
 
     //Update recipe in database
     public function update(): void
     {
+        if(empty($_GET['id'])) {
+            $this->redirect('/');
+        }
 
+        $id = $_GET['id'];
+        $data = [
+            'title'       => $_POST['title'],
+            'description' => $_POST['description'],
+            'ingredients' => $_POST['ingredients'],
+            'time'        => $_POST['time'],
+            'level'       => $_POST['level']
+        ];
+
+        if(!$this->recipe->validate($data)) {
+            $this->view('recipe/create', [
+                'model' => $this->recipe,
+                'data'  => $data
+            ]);
+            return;
+        }
+
+        $this->recipe->update(
+            $id,
+            $data['title'],
+            'IMAGE',
+            $data['description'],
+            $data['ingredients'],
+            $data['time'],
+            $data['level']
+        );
+
+        $this->redirect('/recipe/show?id='.$id);
     }
 
     //Delete recipe from db
     public function destroy(): void
     {
-        if(!isset($_GET['id'])) {
+        if(empty($_GET['id'])) {
             $this->redirect('/');
         }
 

@@ -38,7 +38,7 @@ class RecipeModel extends Model
         return $this->db->single();
     }
 
-    public function create(string $title, int $user_id, ?string $image, string $description, string $ingredients, int $prep_time, string $level): void
+    public function create(string $title, int $user_id, ?string $image, string $description, string $ingredients, int $prep_time, string $level): int
     {
         $this->db->query('INSERT INTO RECIPES (TITLE, USER_ID, IMAGE, DESCRIPTION, INGREDIENTS, PREP_TIME, LEVEL, CREATED_AT) 
                                 VALUES (:TITLE, :USER_ID, :IMAGE, :DESCRIPTION, :INGREDIENTS, :PREP_TIME, :LEVEL, :CREATED_AT)');
@@ -52,6 +52,8 @@ class RecipeModel extends Model
         $this->db->bind(':LEVEL', $level);
         $this->db->bind(':CREATED_AT', $this->getDate());
         $this->db->execute();
+
+        return $this->db->getInsertId();
     }
 
     public function update(int $id, string $title, ?string $image, string $description, string $ingredients, int $prep_time, string $level): void
