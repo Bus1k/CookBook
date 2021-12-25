@@ -60,18 +60,21 @@ class Database
     }
 
     //Execute the prepared statement
-    public function execute(){
+    public function execute()
+    {
         return $this->stmt->execute();
     }
 
     //Get results
-    public function resultSet(){
+    public function resultSet()
+    {
         $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //Get single record
-    public function single(){
+    public function single()
+    {
         $this->execute();
         $result = $this->stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -83,7 +86,14 @@ class Database
     }
 
     //Get row count
-    public function rowCount(){
+    public function rowCount()
+    {
         return $this->stmt->rowCount();
+    }
+
+    //Get insert id
+    public function getInsertId()
+    {
+        return $this->pdo->lastInsertId();
     }
 }
