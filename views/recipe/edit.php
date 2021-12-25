@@ -10,12 +10,12 @@
             </div>
             <div class='inputs'>
                 <label for="description"><b>Description</b></label>
-                <textarea name="description" id="description" cols="30" rows="4" required><?php echo $recipe['DESCRIPTION'] ?? ''; ?></textarea>
+                <textarea name="description" id="description" cols="30" rows="4" required class="<?php echo $model->hasErrors('description') ? 'validAlert' : ''; ?>"><?php echo $recipe['DESCRIPTION'] ?? ''; ?></textarea>
                 <div class='validAlert'><?php echo $model->getFirstError('description'); ?></div>
             </div>
             <div class='inputs'>
                 <label for="ingredients"><b>Ingredients</b></label>
-                <textarea name="ingredients" id="ingredients" cols="30" rows="3" required><?php echo $recipe['INGREDIENTS'] ?? ''; ?></textarea>
+                <textarea name="ingredients" id="ingredients" cols="30" rows="3" required class="<?php echo $model->hasErrors('ingredients') ? 'validAlert' : ''; ?>"><?php echo $recipe['INGREDIENTS'] ?? ''; ?></textarea>
                 <div class='validAlert'><?php echo $model->getFirstError('ingredients'); ?></div>
             </div>
             <div class='inputs'>
@@ -27,10 +27,10 @@
                 <label for="level"><b>Choose a level</b></label>
                 <select name="level" id="level" required>
                     <option value="">--Please choose an option--</option>
-                    <option value="beginner">Beginner</option>
-                    <option value="elementary">Elementary</option>
-                    <option value="intermediate">Intermediate</option>
-                    <option value="advanced">Advanced</option>
+                    <option value="beginner" <?php if($recipe['LEVEL'] === 'beginner'): ?>selected<?php endif; ?>>Beginner</option>
+                    <option value="elementary" <?php if($recipe['LEVEL'] === 'elementary'): ?>selected<?php endif; ?>>Elementary</option>
+                    <option value="intermediate" <?php if($recipe['LEVEL'] === 'intermediate'): ?>selected<?php endif; ?>>Intermediate</option>
+                    <option value="advanced" <?php if($recipe['LEVEL'] === 'advanced'): ?>selected<?php endif; ?>>Advanced</option>
                 </select>
                 <div class='validAlert'><?php echo $model->getFirstError('level'); ?></div>
             </div>

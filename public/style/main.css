@@ -240,11 +240,9 @@ textarea, select,
     color: rgb(190, 40, 40);
     font-size: 0.9rem;
     margin-top: 0.3rem;
-
-
 }
 
-.form input.validAlert {
+.form input.validAlert, textarea.validAlert {
     border: solid 1px rgb(190, 40, 40);
 }
 
