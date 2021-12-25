@@ -25,7 +25,7 @@
                         <td><?php echo $recipe['PREP_TIME']; ?> min</td>
                     </tr>
                     <tr>
-                        <td><i class="fas fa-level-up-alt"></i></td>
+                        <td><i class="fas fa-tachometer-alt"></i></td>
                         <td><?php echo $recipe['LEVEL']; ?></td>
                     </tr>
                     <tr>
@@ -38,8 +38,6 @@
                 <h2>How to prepare</h2>
                 <?php echo $recipe['DESCRIPTION']; ?>
             </div>
-
-
         </div>
         <div>
             <a href="/"><i class="fa-solid fa-arrow-left"></i> Go back to main page</a>

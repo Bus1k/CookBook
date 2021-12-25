@@ -42,6 +42,8 @@ $router->get('/logout', [LoginController::class, 'logout']);
 $router->get('/recipe/add', [RecipeController::class, 'create']);
 $router->post('/recipe/add', [RecipeController::class, 'store']);
 $router->get('/recipe/show', [RecipeController::class, 'show']);
+$router->get('/recipe/edit', [RecipeController::class, 'edit']);
+$router->post('/recipe/edit', [RecipeController::class, 'update']);
 $router->get('/recipe/delete', [RecipeController::class, 'destroy']);
 
 $router->resolve();
