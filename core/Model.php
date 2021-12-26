@@ -104,7 +104,7 @@ abstract class Model
             self::RULE_MAX           => 'Max length of this field must be {max}',
             self::RULE_MATCH         => 'This field must be the same as {match}',
             self::RULE_PHOTO         => 'The image must be a file of type: jpg, jpeg, png',
-            self::RULE_FILE_MAX_SIZE => 'Maximum file size 30 MB'
+            self::RULE_FILE_MAX_SIZE => 'Maximum file size 10 MB'
         ];
     }
 

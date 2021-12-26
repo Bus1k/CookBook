@@ -14,7 +14,7 @@ class RecipeModel extends Model
             'ingredients' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 10], [self::RULE_MAX, 'max' => 255]],
             'time'        => [self::RULE_REQUIRED],
             'level'       => [self::RULE_REQUIRED],
-            'photo'       => [self::RULE_PHOTO, [self::RULE_FILE_MAX_SIZE, 'size_max' => 30000000]], //30 MB in bytes
+            'photo'       => [self::RULE_PHOTO, [self::RULE_FILE_MAX_SIZE, 'size_max' => 10000000]], //10 MB in bytes
         ];
     }
 

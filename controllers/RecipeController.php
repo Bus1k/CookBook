@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\core\Session;
+use app\helpers\UtilHelper;
 use app\models\RecipeModel;
 use app\models\UserModel;
 
@@ -68,8 +69,11 @@ class RecipeController extends Controller
             'ingredients' => $_POST['ingredients'],
             'time'        => $_POST['time'],
             'level'       => $_POST['level'],
-            'photo'       => $_FILES['photo']
         ];
+
+        if($_FILES['photo']['error'] === 0) {
+            $data['photo'] = $_FILES['photo'];
+        }
 
         if(!$this->recipe->validate($data)) {
             $this->view('recipe/create', [
@@ -79,10 +83,14 @@ class RecipeController extends Controller
             return;
         }
 
+        if(isset($data['photo'])) {
+            $fileLocation = UtilHelper::saveFile($data['photo'], PATH_FILES);
+        }
+
         $id = $this->recipe->create(
             $data['title'],
             Session::get('user')['ID'],
-            'IMAGE',
+            $fileLocation ?? null,
             $data['description'],
             $data['ingredients'],
             $data['time'],
