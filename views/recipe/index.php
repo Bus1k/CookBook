@@ -2,7 +2,7 @@
     <nav>
         <ul class='topPanel'>
             <li>
-                <h1>CookBook</h1>
+                <a href="/"><h1>CookBook</h1></a>
             </li>
             <?php if(!\app\core\Session::isLogin()): ?>
                 <li><button><a href="/register">Register</a></button></li>
@@ -12,6 +12,8 @@
                 <li>Welcome, <?php echo \app\core\Session::get('user')['NICKNAME'] ?></li>
                 <span></span>
                 <li><button><a href="/logout">Logout</a></button></li>
+                <span></span>
+                <li><button><a href="/recipe/add">Add recipe</a></button></li>
             <?php endif; ?>
     </nav>
     <header>

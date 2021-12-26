@@ -4,11 +4,18 @@ namespace app\core;
 
 abstract class Model
 {
-    public const RULE_REQUIRED = 'required';
-    public const RULE_EMAIL    = 'email';
-    public const RULE_MIN      = 'min';
-    public const RULE_MAX      = 'max';
-    public const RULE_MATCH    = 'match';
+    public const RULE_REQUIRED      = 'required';
+    public const RULE_EMAIL         = 'email';
+    public const RULE_MIN           = 'min';
+    public const RULE_MAX           = 'max';
+    public const RULE_MATCH         = 'match';
+    public const RULE_PHOTO         = 'photo';
+    public const RULE_FILE_MAX_SIZE = 'file_max_size';
+
+    public const PHOTO_TYPES = [
+        IMAGETYPE_JPEG,
+        IMAGETYPE_PNG,
+    ];
 
     public array $errors = [];
 
@@ -57,6 +64,14 @@ abstract class Model
                     if($ruleName === self::RULE_MATCH && $value !== $data[$rule['match']]) {
                         $this->addValidationError($attribute , self::RULE_MATCH, $rule);
                     }
+
+                    if($ruleName === self::RULE_PHOTO && !in_array(exif_imagetype($value['tmp_name']), self::PHOTO_TYPES, true)) {
+                        $this->addValidationError($attribute , self::RULE_PHOTO);
+                    }
+
+                    if($ruleName === self::RULE_FILE_MAX_SIZE && $value['size'] > $rule['size_max']) {
+                        $this->addValidationError($attribute , self::RULE_FILE_MAX_SIZE);
+                    }
                 }
             }
         }
@@ -83,11 +98,13 @@ abstract class Model
     private function errorMessages(): array
     {
         return [
-            self::RULE_REQUIRED => 'This field is required',
-            self::RULE_EMAIL    => 'This field must be valid email address',
-            self::RULE_MIN      => 'Min length of this field must be {min}',
-            self::RULE_MAX      => 'Max length of this field must be {max}',
-            self::RULE_MATCH    => 'This field must be the same as {match}'
+            self::RULE_REQUIRED      => 'This field is required',
+            self::RULE_EMAIL         => 'This field must be valid email address',
+            self::RULE_MIN           => 'Min length of this field must be {min}',
+            self::RULE_MAX           => 'Max length of this field must be {max}',
+            self::RULE_MATCH         => 'This field must be the same as {match}',
+            self::RULE_PHOTO         => 'The image must be a file of type: jpg, jpeg, png',
+            self::RULE_FILE_MAX_SIZE => 'Maximum file size 30 MB'
         ];
     }
 

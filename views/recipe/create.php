@@ -37,6 +37,7 @@
             <div class='inputs'>
                 <label for="photo"><b>Add photo</b></label>
                 <input type="file" placeholder="Add photo" name="photo" id="photo" class="">
+                <div class='validAlert'><?php echo $model->getFirstError('photo'); ?></div>
             </div>
             <button type="submit" class="registerbtn">Add new recipe</button>
         </div>

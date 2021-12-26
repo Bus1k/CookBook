@@ -67,7 +67,8 @@ class RecipeController extends Controller
             'description' => $_POST['description'],
             'ingredients' => $_POST['ingredients'],
             'time'        => $_POST['time'],
-            'level'       => $_POST['level']
+            'level'       => $_POST['level'],
+            'photo'       => $_FILES['photo']
         ];
 
         if(!$this->recipe->validate($data)) {
