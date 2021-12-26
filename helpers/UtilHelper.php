@@ -10,7 +10,7 @@ namespace app\helpers;
  */
 class UtilHelper
 {
-    public static function randomString($n): string
+    public static function randomString(int $n = 10): string
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $str = '';
