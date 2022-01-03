@@ -48,6 +48,8 @@ class RecipeController extends Controller
 
         if(!empty($recipe['IMAGE'])) {
             $recipe['IMAGE'] = '../uploads/'.$recipe['IMAGE'];
+        } else {
+            $recipe['IMAGE'] = '../images/no-img.jpg';
         }
 
         $this->view('recipe/show', [
