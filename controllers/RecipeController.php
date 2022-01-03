@@ -23,9 +23,15 @@ class RecipeController extends Controller
     public function index(): void
     {
         $allRecipes = $this->recipe->getAll();
-        $lastRecipe = $allRecipes[count($allRecipes) - 1];
 
-        unset($allRecipes[count($allRecipes) - 1]);
+        foreach($allRecipes as $key => $recipe) {
+            if(empty($recipe['IMAGE']) || !file_exists(PATH_FILES.$recipe['IMAGE'])) {
+                $allRecipes[$key]['IMAGE'] = '../images/no-img.jpg';
+            }
+        }
+
+        $lastRecipe = $allRecipes[0];
+        unset($allRecipes[0]);
 
         $this->view('recipe/index', [
             'lastRecipe' => $lastRecipe,

@@ -20,7 +20,7 @@ class RecipeModel extends Model
 
     public function getAll(): array
     {
-        $this->db->query('SELECT * FROM RECIPES');
+        $this->db->query('SELECT * FROM RECIPES ORDER BY CREATED_AT DESC');
 
         return $this->db->resultSet();
     }
