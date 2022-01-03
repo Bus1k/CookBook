@@ -11,7 +11,7 @@
         </div>
 
         <div class='recipePhoto'>
-            <img src="../recipesphotos/apple-pie-g55aabdf7b_640.jpg" alt="">
+            <img src="<?php echo $recipe['IMAGE']; ?>" alt="">
         </div>
         <div class='recipeDescription'>
             <div class='col1'>

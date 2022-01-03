@@ -26,7 +26,8 @@
     <main>
         <section class='lastRecipe'>
             <h1>Last added recipe</h1>
-            <div class='lastRecipe'><img src='recipesphotos/pizza-ge5de67356_640.jpg' alt="">
+            <div class='lastRecipe'>
+                <img src='uploads/<?php echo $lastRecipe['IMAGE']; ?>' alt="">
                 <div class='lastRecipeDescription'>
                     <h2><?php echo $lastRecipe['TITLE']; ?></h2>
                     <p><?php echo $lastRecipe['DESCRIPTION']; ?></p><br>
@@ -39,7 +40,8 @@
             <h1>Previous recipes</h1>
             <div class='previousRecipes'>
                 <?php foreach($allRecipes as $key => $recipe): ?>
-                    <div class='previousRecipe'><img src='recipesphotos/salad-g62ccdc077_640.jpg' alt="salad">
+                    <div class='previousRecipe'>
+                        <img src='uploads/<?php echo $recipe['IMAGE']; ?>' alt="food picture">
                         <h3><?php echo $recipe['TITLE']; ?></h3>
                         <p><?php echo $recipe['DESCRIPTION']; ?></p>
                         <a href="/recipe/show?id=<?php echo $recipe['ID']; ?>">Show details</a>

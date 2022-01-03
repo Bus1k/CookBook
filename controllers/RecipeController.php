@@ -46,6 +46,10 @@ class RecipeController extends Controller
             $this->redirect('/');
         }
 
+        if(!empty($recipe['IMAGE'])) {
+            $recipe['IMAGE'] = '../uploads/'.$recipe['IMAGE'];
+        }
+
         $this->view('recipe/show', [
             'recipe' => $recipe,
             'user'   => $this->user->getById($recipe['USER_ID'])

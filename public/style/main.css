@@ -105,10 +105,12 @@ div.singleRecipe, div.mainpage {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-
+    padding: 1em;
 }
 .mainpage .lastRecipe img {
     max-width: 50%;
+    width: 570px;
+    height: 380px;
 }
 .mainpage div.lastRecipeDescription {
     width: 47%;
@@ -264,6 +266,11 @@ textarea, select,
     width: 100%;
     text-align: center;
     padding: 1em 1em 0.5em 1em;
+}
+
+.recipe div.recipePhoto img {
+    width: 640px;
+    height: 426px;
 }
 
 .recipe div.recipeDescription {
