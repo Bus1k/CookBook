@@ -158,14 +158,17 @@ class RecipeController extends Controller
             return;
         }
 
+        $recipe = null;
         if(isset($data['photo'])) {
             $fileLocation = UtilHelper::saveFile($data['photo'], PATH_FILES);
+        } else {
+            $recipe = $this->recipe->getById($id);
         }
 
         $this->recipe->update(
             $id,
             $data['title'],
-            $fileLocation ?? null,
+            $fileLocation ?? $recipe['IMAGE'],
             $data['description'],
             $data['ingredients'],
             $data['time'],
