@@ -331,9 +331,22 @@ textarea, select,
 .addRecipe .registerbtn{
     margin: 2em;
 }
+.addRecipe .registerbtn:hover{
+    cursor: pointer;
+}
 
 @media (max-width: 500px) {
     .form .container {
         max-width: 90vw;
     }
+}
+
+.editImage {
+    width: 320px;
+    height: 213px;
+    padding-top: 20px;
+}
+
+.editImageBtn:hover {
+    cursor: pointer;
 }

@@ -146,6 +146,10 @@ class RecipeController extends Controller
             'level'       => $_POST['level']
         ];
 
+        if($_FILES['photo']['error'] === 0) {
+            $data['photo'] = $_FILES['photo'];
+        }
+
         if(!$this->recipe->validate($data)) {
             $this->view('recipe/create', [
                 'model' => $this->recipe,
@@ -154,10 +158,14 @@ class RecipeController extends Controller
             return;
         }
 
+        if(isset($data['photo'])) {
+            $fileLocation = UtilHelper::saveFile($data['photo'], PATH_FILES);
+        }
+
         $this->recipe->update(
             $id,
             $data['title'],
-            'IMAGE',
+            $fileLocation ?? null,
             $data['description'],
             $data['ingredients'],
             $data['time'],

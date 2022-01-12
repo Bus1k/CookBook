@@ -34,11 +34,28 @@
                 </select>
                 <div class='validAlert'><?php echo $model->getFirstError('level'); ?></div>
             </div>
-            <div class='inputs'>
-                <label for="photo"><b>Add photo</b></label>
-                <input type="file" placeholder="Add photo" name="photo" id="photo" class="">
+            <?php if(isset($recipe['IMAGE'])): ?>
+            <div id="editImage">
+                <div class='inputs'>
+                    <img src='../uploads/<?php echo $recipe['IMAGE']; ?>' alt="food picture" class="editImage">
+                    <button type="button" class="editImageBtn">Change photo</button>
+                </div>
             </div>
+            <?php else: ?>
+                <div class="inputs">
+                    <label for="photo"><b>Add photo</b></label>
+                    <input type="file" placeholder="Add photo" name="photo" id="photo" class="">
+                </div>
+            <?php endif; ?>
             <button type="submit" class="registerbtn">Save changes</button>
         </div>
     </form>
 </div>
+<script type="text/javascript">
+    document.querySelector('.editImageBtn').addEventListener('click', function(){
+        document.getElementById('editImage').innerHTML = '<div class="inputs">' +
+                                                            '<label for="photo"><b>Add photo</b></label>' +
+                                                            '<input type="file" placeholder="Add photo" name="photo" id="photo" class="">' +
+                                                         '</div>';
+    });
+</script>
