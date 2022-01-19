@@ -28,6 +28,7 @@ $router   = new Router();
  */
 //HOMEPAGE
 $router->get('/', [RecipeController::class, 'index']);
+$router->post('/', [RecipeController::class, 'index']);
 
 //REGISTER USER
 $router->get('/register', [RegisterController::class, 'create']);

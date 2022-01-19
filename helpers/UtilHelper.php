@@ -31,4 +31,13 @@ class UtilHelper
 
         return pathinfo($filePath)['basename'];
     }
+
+    public static function checkPhotos(array &$recipes): void
+    {
+        foreach($recipes as $key => $recipe) {
+            if(empty($recipe['IMAGE']) || !file_exists(PATH_FILES.$recipe['IMAGE'])) {
+                $recipes[$key]['IMAGE'] = '../images/no-img.jpg';
+            }
+        }
+    }
 }

@@ -4,6 +4,12 @@
             <li>
                 <a href="/"><h1>CookBook</h1></a>
             </li>
+            <li>
+                <form action="/" method="POST">
+                    <input type="text" name="search" id="search" required>
+                    <button type="submit">Search</button>
+                </form>
+            </li>
             <?php if(!\app\core\Session::isLogin()): ?>
                 <li><button><a href="/register">Register</a></button></li>
                 <span></span>
@@ -24,6 +30,8 @@
         </div>
     </header>
     <main>
+
+        <?php if(!empty($lastRecipe) && !empty($allRecipes)): ?>
         <section class='lastRecipe'>
             <h1>Last added recipe</h1>
             <div class='lastRecipe'>
@@ -49,5 +57,22 @@
                 <?php endforeach; ?>
             </div>
         </section>
+        <?php endif; ?>
+
+        <?php if(!empty($searchRecipes)): ?>
+            <section>
+                <h1>Search results</h1>
+                <div class='previousRecipes'>
+                    <?php foreach($searchRecipes as $key => $recipe): ?>
+                        <div class='previousRecipe'>
+                            <img src='uploads/<?php echo $recipe['IMAGE']; ?>' alt="food picture">
+                            <h3><?php echo $recipe['TITLE']; ?></h3>
+                            <p><?php echo $recipe['DESCRIPTION']; ?></p>
+                            <a href="/recipe/show?id=<?php echo $recipe['ID']; ?>">Show details</a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </section>
+        <?php endif; ?>
     </main>
 </div>

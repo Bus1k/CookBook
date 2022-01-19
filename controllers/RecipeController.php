@@ -22,20 +22,24 @@ class RecipeController extends Controller
     //Display main page with recipes
     public function index(): void
     {
-        $allRecipes = $this->recipe->getAll();
+        $lastRecipe    = [];
+        $allRecipes    = [];
+        $searchRecipes = [];
 
-        foreach($allRecipes as $key => $recipe) {
-            if(empty($recipe['IMAGE']) || !file_exists(PATH_FILES.$recipe['IMAGE'])) {
-                $allRecipes[$key]['IMAGE'] = '../images/no-img.jpg';
-            }
+        if(isset($_POST['search'])) {
+            $searchRecipes = $this->recipe->getBySearch($_POST['search']);
+            UtilHelper::checkPhotos($searchRecipes);
+        } else {
+            $allRecipes = $this->recipe->getAll();
+            UtilHelper::checkPhotos($allRecipes);
+            $lastRecipe = $allRecipes[0];
+            unset($allRecipes[0]);
         }
 
-        $lastRecipe = $allRecipes[0];
-        unset($allRecipes[0]);
-
         $this->view('recipe/index', [
-            'lastRecipe' => $lastRecipe,
-            'allRecipes' => $allRecipes
+            'lastRecipe'    => $lastRecipe,
+            'allRecipes'    => $allRecipes,
+            'searchRecipes' => $searchRecipes
         ]);
     }
 

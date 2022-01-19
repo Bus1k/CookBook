@@ -33,6 +33,14 @@ class RecipeModel extends Model
         return $this->db->single();
     }
 
+    public function getBySearch(string $search)
+    {
+        $this->db->query('SELECT * FROM RECIPES WHERE TITLE LIKE :TITLE');
+        $this->db->bind(':TITLE', '%'.$search.'%');
+
+        return $this->db->resultSet();
+    }
+
     public function getLast(): array
     {
         $this->db->query('SELECT * FROM RECIPES ORDER BY ID DESC LIMIT 1;');
