@@ -10,7 +10,7 @@
             </div>
             <div class='inputs'>
                 <label for="description"><b>Description</b></label>
-                <textarea name="description" id="description" cols="30" rows="4" required class="<?php echo $model->hasErrors('description') ? 'validAlert' : ''; ?>"><?php echo $data['description'] ?? ''; ?></textarea>
+                <textarea name="description" id="description"required class="<?php echo $model->hasErrors('description') ? 'validAlert' : ''; ?>"><?php echo $data['description'] ?? ''; ?></textarea>
                 <div class='validAlert'><?php echo $model->getFirstError('description'); ?></div>
             </div>
             <div class='inputs'>

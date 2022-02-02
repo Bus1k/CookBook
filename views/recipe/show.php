@@ -1,4 +1,5 @@
 <div class='singleRecipe'>
+    <div class='mainPanelSingleRecipe'>
     <main class='recipe'>
         <div class='recipeTitle'>
             <h1><?php echo $recipe['TITLE']; ?></h1>
@@ -9,7 +10,7 @@
                 <a href="/recipe/delete?id=<?php echo $recipe['ID']; ?>"><i class="fa-solid fa-trash-can"></i></a>
             <?php endif; ?>
         </div>
-
+        
         <div class='recipePhoto'>
             <img src="<?php echo $recipe['IMAGE']; ?>" alt="">
         </div>
@@ -30,7 +31,7 @@
                     </tr>
                     <tr>
                         <td><i class="fa-solid fa-basket-shopping"></i></td>
-                        <td>Ingredients: <?php echo $recipe['INGREDIENTS']; ?></td>
+                        <td><?php echo $recipe['INGREDIENTS']; ?></td>
                     </tr>
                 </table>
             </div>
@@ -39,8 +40,9 @@
                 <?php echo $recipe['DESCRIPTION']; ?>
             </div>
         </div>
-        <div>
+        <div class='goback'>
             <a href="/"><i class="fa-solid fa-arrow-left"></i> Go back to main page</a>
         </div>
+   </div>
     </main>
 </div>

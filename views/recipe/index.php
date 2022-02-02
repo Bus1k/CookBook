@@ -5,7 +5,7 @@
                 <a href="/"><h1>CookBook</h1></a>
             </li>
             <li>
-                <form action="/" method="POST">
+                <form class='seraching'action="/" method="POST">
                     <input type="text" name="search" id="search" required>
                     <button type="submit">Search</button>
                 </form>

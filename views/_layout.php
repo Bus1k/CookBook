@@ -15,7 +15,6 @@
     <title><?php echo APP_NAME ?></title>
 </head>
 <body>
-
     <?php echo $content ?>
 
 </body>

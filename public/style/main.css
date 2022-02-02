@@ -3,14 +3,29 @@
     padding: 0;
     box-sizing: border-box;
 }
+button{
+    cursor: pointer;
+}
 
-div.singleRecipe, div.mainpage {
+div.singleRecipe,
+div.mainpage {
     background: rgb(255, 255, 255);
     background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.29735644257703087) 30%, rgba(0, 0, 0, 0.3029586834733894) 74%, rgba(255, 255, 255, 0) 100%);
     background-size: cover;
     font-family: 'Kumbh Sans',
-    sans-serif;
+        sans-serif;
+
+}
+
+div.mainpage {
     min-height: 100vh;
+}
+
+div.singleRecipe {
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .singleRecipe nav,
@@ -37,6 +52,11 @@ div.singleRecipe, div.mainpage {
 
 .singleRecipe nav ul.topPanel li:nth-child(1), .mainpage nav ul.topPanel li:nth-child(1) {
     flex-grow: 1;
+}
+
+.singleRecipe nav ul.topPanel li:nth-child(3),
+.mainpage nav ul.topPanel li:nth-child(3) {
+   margin-left: 1em;
 }
 
 
@@ -79,7 +99,6 @@ div.singleRecipe, div.mainpage {
     font-family: 'Kumbh Sans',
     sans-serif;
     background: rgb(28, 189, 54);
-
     border: 0 solid transparent;
     border-radius: 10px;
     color: white;
@@ -248,29 +267,52 @@ textarea, select,
     border: solid 1px rgb(190, 40, 40);
 }
 
-.singleRecipe main.recipe {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    background-color: white;
-    padding: 1em 4em 5em 4em;
-    border-radius: 2em;
-    flex-wrap: wrap;
-    max-width: 1100px;
+ main.recipe {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     display: flex;
+     flex-direction: column;
+     background-color: white;
+     padding: 1em 2em;
+     border-radius: 2em;
+     max-width: 1100px;
+     width: 70%;
+     height: 90%;
+
+ }
+
+.mainPanelSingleRecipe {
+    position: relative;
+    width: 100vw;
+    min-height: calc(100% - 4rem);
+    margin-top: 4rem;
 }
+ main.recipe {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     display: flex;
+     flex-direction: column;
+     background-color: white;
+     padding: 1em 2em;
+     border-radius: 2em;
+     max-width: 1100px;
+     width: 70%;
+     height: 90%;
+ }
+
 .recipe div.recipePhoto {
+    flex-grow: 1;
     height: 40%;
     width: 100%;
     text-align: center;
     padding: 1em 1em 0.5em 1em;
 }
-
 .recipe div.recipePhoto img {
-    width: 640px;
-    height: 426px;
+    height: 100%;
 }
 
 .recipe div.recipeDescription {
@@ -282,6 +324,7 @@ textarea, select,
     line-height: 1.5rem;
 
 }
+
 .recipeTitle {
     display: flex;
     flex-direction: row;
@@ -313,7 +356,7 @@ textarea, select,
 }
 .recipe .col1 td i,
 .recipeTitle i {
-    color:rgb(28, 189, 54);
+    color:rgb(28, 189, 49);
     font-weight: 900;
     font-size: 1.2em;
     text-align: center;
@@ -326,7 +369,7 @@ textarea, select,
     text-decoration: none;
 }
 .addRecipe #description {
-    height: 20em;
+    height: 8em;
 }
 .addRecipe .registerbtn{
     margin: 2em;
@@ -334,6 +377,10 @@ textarea, select,
 .addRecipe .registerbtn:hover{
     cursor: pointer;
 }
+.form.addRecipe .container{
+    width: 60rem;
+}
+
 
 @media (max-width: 500px) {
     .form .container {
@@ -349,4 +396,28 @@ textarea, select,
 
 .editImageBtn:hover {
     cursor: pointer;
+}
+.searching {
+
+    font-family: 'Kumbh Sans',
+        sans-serif;
+    padding: 1em 0;
+    margin: 0.5em 1em 0 0;
+    text-indent: 0.5em;
+    border: solid rgb(211, 209, 209) 0.5px;
+    border-radius: 5px;
+}
+input#search {
+        font-family: 'Kumbh Sans',
+            sans-serif;
+      
+        padding: 1em 0;
+        margin: 0.5em 0.5em 0 0;
+        text-indent: 0.5em;
+        border: solid rgb(211, 209, 209) 0.5px;
+        border-radius: 5px;
+
+}
+textarea#description{
+height: 1rem;
 }

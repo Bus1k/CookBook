@@ -10,9 +10,9 @@ const DB_PORT = '';
 
 
 //APP CONFIG
-const APP_NAME = 'CookBook';
-const PATH_ROOT    = __DIR__ . '/../';
-const PATH_ASSETS  = PATH_ROOT.'assets/';
+const APP_NAME   = 'CookBook';
+const PATH_ROOT  = __DIR__ . '/../';
+const PATH_FILES = PATH_ROOT.'public/uploads/';
 
 //CREATE TABLE `RECIPES` (
 //`ID` INT(11) NOT NULL AUTO_INCREMENT,
