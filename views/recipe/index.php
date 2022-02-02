@@ -38,7 +38,7 @@
                 <img src='uploads/<?php echo $lastRecipe['IMAGE']; ?>' alt="">
                 <div class='lastRecipeDescription'>
                     <h2><?php echo $lastRecipe['TITLE']; ?></h2>
-                    <p><?php echo $lastRecipe['DESCRIPTION']; ?></p><br>
+                    <p><?php echo \app\helpers\UtilHelper::cutString($lastRecipe['DESCRIPTION'], 300, true); ?></p><br>
                     <a href="/recipe/show?id=<?php echo $lastRecipe['ID']; ?>">Show details</a>
                 </div>
 
@@ -51,7 +51,7 @@
                     <div class='previousRecipe'>
                         <img src='uploads/<?php echo $recipe['IMAGE']; ?>' alt="food picture">
                         <h3><?php echo $recipe['TITLE']; ?></h3>
-                        <p><?php echo $recipe['DESCRIPTION']; ?></p>
+                        <p><?php echo \app\helpers\UtilHelper::cutString($recipe['DESCRIPTION'], 300, true); ?></p>
                         <a href="/recipe/show?id=<?php echo $recipe['ID']; ?>">Show details</a>
                     </div>
                 <?php endforeach; ?>
@@ -67,7 +67,7 @@
                         <div class='previousRecipe'>
                             <img src='uploads/<?php echo $recipe['IMAGE']; ?>' alt="food picture">
                             <h3><?php echo $recipe['TITLE']; ?></h3>
-                            <p><?php echo $recipe['DESCRIPTION']; ?></p>
+                            <p><?php echo \app\helpers\UtilHelper::cutString($recipe['DESCRIPTION'], 300, true); ?></p>
                             <a href="/recipe/show?id=<?php echo $recipe['ID']; ?>">Show details</a>
                         </div>
                     <?php endforeach; ?>

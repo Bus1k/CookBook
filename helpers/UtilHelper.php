@@ -40,4 +40,22 @@ class UtilHelper
             }
         }
     }
+
+    public static function cutString(string $str, int $length = 200, bool $ellipsis = false): string
+    {
+        if (strlen($str) > $length)
+        {
+            $str = substr($str, 0, $length);
+            $str = explode(' ', $str);
+            array_pop($str); // remove last word from array
+            $str[count($str) - 1] = str_replace([',', '.', ':', ';', '<', '>'], '', $str[count($str) - 1]);
+            $str = implode(' ', $str);
+        }
+
+        if($ellipsis) {
+            return $str . '...';
+        }
+
+        return $str;
+    }
 }

@@ -27,7 +27,7 @@
                     </tr>
                     <tr>
                         <td><i class="fas fa-tachometer-alt"></i></td>
-                        <td><?php echo $recipe['LEVEL']; ?></td>
+                        <td><?php echo ucfirst($recipe['LEVEL']); ?></td>
                     </tr>
                     <tr>
                         <td><i class="fa-solid fa-basket-shopping"></i></td>
